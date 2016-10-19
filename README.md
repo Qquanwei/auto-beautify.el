@@ -9,5 +9,5 @@
 (require 'auto-beautify)
 
 ```lisp
-(add-hook 'js2-mode-hook 'auto-beautify)
+(add-hook 'js2-mode-hook 'auto-beautify-mode)
 ```

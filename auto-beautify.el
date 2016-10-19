@@ -33,7 +33,7 @@
 (define-key auto-beautify-keymap (kbd "RET") 'auto-beautify-when-enter)
 (define-key auto-beautify-keymap (kbd "}") 'auto-beautify-when-branck)
 
-(define-minor-mode auto-beautify
+(define-minor-mode auto-beautify-mode
   "auto-beautify you js/jsx"
   nil
   " AB "
