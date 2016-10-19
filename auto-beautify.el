@@ -36,7 +36,7 @@
 (define-minor-mode auto-beautify
   "auto-beautify you js/jsx"
   nil
-  "AB"
+  " AB "
   auto-beautify-keymap)
 
 (provide 'auto-beautify)
