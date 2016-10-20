@@ -9,7 +9,7 @@
 
 (require 'web-beautify)
 
-(defun auto-beautify-when-enter (&optional)
+(defun auto-beautify-when-enter ()
   " eval web-beautify when type enter "
   (interactive)
   (newline-and-indent)
@@ -17,7 +17,7 @@
     (line-move -1)
     (web-beautify-format-region web-beautify-js-program (line-beginning-position) (line-end-position))))
 
-(defun auto-beautify-when-branck (&optional)
+(defun auto-beautify-when-branck ()
   "eval web-beautify when region"
   (interactive)
   (insert-char 125)
@@ -26,7 +26,11 @@
      web-beautify-js-program
      (scan-lists (point) -1 0)
      (point)))
-  (forward-list))
+  (forward-list)
+  (save-excursion
+    (indent-region
+     (scan-lists (point) -1 0)
+     (point))))
 
 
 (defvar auto-beautify-keymap (make-sparse-keymap))
