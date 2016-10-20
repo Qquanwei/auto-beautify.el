@@ -50,7 +50,7 @@
 (defvar auto-beautify-keymap (make-sparse-keymap))
 (define-key auto-beautify-keymap (kbd "RET") 'auto-beautify-when-enter)
 (define-key auto-beautify-keymap (kbd "}") 'auto-beautify-when-branck)
-
+;;;###autoload
 (define-minor-mode auto-beautify-mode
   "auto-beautify you js/jsx"
   nil
