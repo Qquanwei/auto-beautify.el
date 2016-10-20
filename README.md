@@ -1,4 +1,4 @@
-![自动完成演示](http://oez54isu1.bkt.clouddn.com/emacs.gif "演示")
+![自动完成演示](https://github.com/Qquanwei/auto-beautify.el/blob/master/auto-beautify.el "演示")
 
 # install
 
