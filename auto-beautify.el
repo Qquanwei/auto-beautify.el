@@ -2,7 +2,7 @@
 
 ;; Author: quanwei9958@126.com
 ;; Version: 0.0.2
-;; Package-Requires: ((web-beautify "0.3.1"))
+;; Package-Requires: ((web-beautify "0.3.1") (web-mode "14.0.27"))
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -22,14 +22,27 @@
 ;;; Code:
 
 (require 'web-beautify)
+(require 'web-mode)
+
+(defsubst begining-with-close-tag (&optional N)
+  "return t if the line begining with </"
+  (or N (setq N 1))
+  (save-excursion
+    (re-search-backward "^ *<\/.*" (line-beginning-position N) t)))
+
 
 (defun auto-beautify-when-enter ()
   " eval web-beautify when type enter "
   (interactive)
   (newline-and-indent)
   (save-excursion
-    (line-move -1)
-    (web-beautify-format-region web-beautify-js-program (line-beginning-position) (line-end-position))))
+    (goto-char (- (line-end-position 0) 1))
+    (if (numberp (begining-with-close-tag))
+        (let ((close-point (point)))
+          (web-mode-navigate)
+          (indent-region (point) close-point)
+          (web-mode-navigate))
+      (web-beautify-format-region web-beautify-js-program (line-beginning-position) (line-end-position)))))
 
 (defun auto-beautify-when-branck ()
   "eval web-beautify when branck"
@@ -50,6 +63,7 @@
 (defvar auto-beautify-keymap (make-sparse-keymap))
 (define-key auto-beautify-keymap (kbd "RET") 'auto-beautify-when-enter)
 (define-key auto-beautify-keymap (kbd "}") 'auto-beautify-when-branck)
+
 ;;;###autoload
 (define-minor-mode auto-beautify-mode
   "auto-beautify you js/jsx"
