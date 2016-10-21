@@ -1,5 +1,3 @@
-![自动完成演示](http://oez54isu1.bkt.clouddn.com/emacs2.gif "演示")
-
 # install
 
 * `npm install js-beautify -g`
