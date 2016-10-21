@@ -24,6 +24,12 @@
 (require 'web-beautify)
 (require 'web-mode)
 
+
+(defsubst current-line-empty-p ()
+  (save-excursion
+    (beginning-of-line)
+    (looking-at "[[:space:]]*$")))
+
 (defsubst begining-with-close-tag (&optional N)
   "return t if the line begining with </"
   (or N (setq N 1))
@@ -36,12 +42,14 @@
   (newline-and-indent)
   (save-excursion
     (goto-char (- (line-end-position 0) 1))
-    (if (numberp (begining-with-close-tag))
-        (let ((close-point (point)))
-          (web-mode-navigate)
-          (indent-region (point) close-point)
-          (web-mode-navigate))
-      (web-beautify-format-region web-beautify-js-program (line-beginning-position) (line-end-position)))))
+    (unless (current-line-empty-p)
+      (if (numberp (begining-with-close-tag))
+          (let ((close-point (point)))
+            (web-mode-navigate)
+            (indent-region (point) close-point)
+            (web-mode-navigate))
+        (web-beautify-format-region web-beautify-js-program (line-beginning-position) (line-end-position))))))
+
 
 (defun auto-beautify-when-branck ()
   "eval web-beautify when branck"
