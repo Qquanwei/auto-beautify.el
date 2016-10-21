@@ -1,7 +1,7 @@
 ;;; auto-beautify.el --- auto format you js/jsx file
 
 ;; Author: quanwei9958@126.com
-;; Version: 0.0.2
+;; Version: 0.0.3
 ;; Package-Requires: ((web-beautify "0.3.1") (web-mode "14.0.27"))
 
 ;; This program is free software; you can redistribute it and/or modify
