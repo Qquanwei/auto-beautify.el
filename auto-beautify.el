@@ -1,4 +1,4 @@
-;;; auto-beautify --- auto format you js/jsx file
+;;; auto-beautify.el --- auto format you js/jsx file
 
 ;; Author: quanwei9958@126.com
 ;; Version: 0.0.2
