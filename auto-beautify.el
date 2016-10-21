@@ -48,7 +48,8 @@
             (web-mode-navigate)
             (indent-region (point) close-point)
             (web-mode-navigate))
-        (web-beautify-format-region web-beautify-js-program (line-beginning-position) (line-end-position))))))
+        (web-beautify-format-region web-beautify-js-program (line-beginning-position) (line-end-position)))
+      (font-lock-flush (line-beginning-position) (line-end-position)))))
 
 
 (defun auto-beautify-when-branck ()
