@@ -30,7 +30,6 @@
   (save-excursion
     (re-search-backward "^ *<\/.*" (line-beginning-position N) t)))
 
-
 (defun auto-beautify-when-enter ()
   " eval web-beautify when type enter "
   (interactive)
@@ -47,17 +46,17 @@
 (defun auto-beautify-when-branck ()
   "eval web-beautify when branck"
   (interactive)
-  (insert-char 125)
+  (self-insert-command 1)
   (save-excursion
     (web-beautify-format-region
      web-beautify-js-program
-     (scan-lists (point) -1 0)
+     (scan-lists (point) -1 0)     
      (point)))
   (forward-list)
-  (save-excursion
-    (indent-region
-     (scan-lists (point) -1 0)
-     (point))))
+  (let ((begin (scan-lists (point) -1 0))
+        (end (point)))
+    (font-lock-flush begin end)
+    (indent-region begin end)))
 
 
 (defvar auto-beautify-keymap (make-sparse-keymap))
