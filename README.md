@@ -33,7 +33,7 @@ before
 ```
  const a=0;
 ```
-after <enter>
+after `<enter>`
 ```
  const a = 0;
 ```
@@ -42,7 +42,7 @@ before
 ```
 const sayHello=()=>console.log("hello");
 ```
-after <enter>
+after `<enter>`
 ```
 const sayHello = () => console.log("hello");
 ```
@@ -61,7 +61,7 @@ function render() {
   )
 _ <-  cursor
 ```
-after type "}"
+after type `}`
 ```
 function render() {
   return (
@@ -76,7 +76,10 @@ function render() {
 }
 ```
 
-## My jsbeautifyrc
+
+## Reference
+
+** My jsbeautifyrc **
 
 file : ~/jsbeautifyrc
 
@@ -94,4 +97,18 @@ file : ~/jsbeautifyrc
   "indent_handlebars": true,
   "object":{}
 }
+```
+
+** My web-mode setup **
+```
+(custom-set-variables
+ '(web-mode-markup-indent-offset 2)
+ '(web-mode-css-indent-offset 2)
+ '(web-mode-code-indent-offset 2)
+ '(web-mode-enable-auto-pairing t)
+ '(web-mode-enable-auto-closing t)
+ '(web-mode-enable-css-colorization t)
+ '(web-mode-commet-style 2)
+ '(web-mode-enable-current-column-highlight t)
+ '(web-mode-enable-current-element-highlight t))
 ```
