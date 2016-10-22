@@ -1,4 +1,4 @@
-;;; auto-beautify.el --- auto format you js/jsx file
+;;; js-auto-beautify.el --- auto format you js/jsx file
 
 ;; Author: quanwei9958@126.com
 ;; Version: 0.0.3
@@ -18,7 +18,7 @@
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ;; Usage:
-;; (add-hook 'js2-mode-hook 'auto-beautify-mode)
+;; (add-hook 'js2-mode-hook 'js-auto-beautify-mode)
 ;;; Code:
 
 (require 'web-beautify)
