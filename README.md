@@ -1,16 +1,16 @@
 # install
 
 * `npm install js-beautify -g`
-* `M-x RET package-install RET auto-beautify`
+* `M-x RET package-install RET js-auto-beautify`
 
 # Usag:
 
 (require 'auto-beautify)
 
 ```lisp
-(add-hook 'js2-mode-hook 'auto-beautify-mode)
+(add-hook 'js2-mode-hook 'js-auto-beautify-mode)
 ;; or 
-;; (add-hook 'web-mode 'auto-beautify-mode)
+;; (add-hook 'web-mode 'js-auto-beautify-mode)
 ```
 
 if you want support React/jsx need set web-mode content type.
@@ -74,6 +74,42 @@ function render() {
 }
 ```
 
+before
+```javascript
+function render() {
+  const a =0;
+  return (
+    <div>
+   <a href=""></a>
+      <ul>
+     <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>_ //<-  cursor
+  )
+}
+
+```
+
+after `<enter>`
+just format this region that in  `<div> ... </div>`
+
+```javascript
+function render() {
+  const a =0;
+  return (
+    <div>
+      <a href=""></a>
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+  )
+}
+```
 
 ## Reference
 

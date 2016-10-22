@@ -25,25 +25,25 @@
 (require 'web-mode)
 
 
-(defsubst current-line-empty-p ()
+(defsubst js-auto-beautify-current-line-empty-p ()
   (save-excursion
     (beginning-of-line)
     (looking-at "[[:space:]]*$")))
 
-(defsubst begining-with-close-tag (&optional N)
+(defsubst js-auto-beautify-begining-with-close-tag (&optional N)
   "return t if the line begining with </"
   (or N (setq N 1))
   (save-excursion
     (re-search-backward "^ *<\/.*" (line-beginning-position N) t)))
 
-(defun auto-beautify-when-enter ()
+(defun js-auto-beautify-when-enter ()
   " eval web-beautify when type enter "
   (interactive)
   (newline-and-indent)
   (save-excursion
     (goto-char (- (line-end-position 0) 1))
-    (unless (current-line-empty-p)
-      (if (numberp (begining-with-close-tag))
+    (unless (js-auto-beautify-current-line-empty-p)
+      (if (numberp (js-auto-beautify-begining-with-close-tag))
           (let ((close-point (point)))
             (web-mode-navigate)
             (indent-region (point) close-point)
@@ -52,7 +52,7 @@
       (font-lock-flush (line-beginning-position) (line-end-position)))))
 
 
-(defun auto-beautify-when-branck ()
+(defun js-auto-beautify-when-branck ()
   "eval web-beautify when branck"
   (interactive)
   (self-insert-command 1)
@@ -68,18 +68,18 @@
     (indent-region begin end)))
 
 
-(defvar auto-beautify-keymap (make-sparse-keymap))
-(define-key auto-beautify-keymap (kbd "RET") 'auto-beautify-when-enter)
-(define-key auto-beautify-keymap (kbd "}") 'auto-beautify-when-branck)
+(defvar js-auto-beautify-keymap (make-sparse-keymap))
+(define-key js-auto-beautify-keymap (kbd "RET") 'js-auto-beautify-when-enter)
+(define-key js-auto-beautify-keymap (kbd "}") 'js-auto-beautify-when-branck)
 
 ;;;###autoload
-(define-minor-mode auto-beautify-mode
+(define-minor-mode js-auto-beautify-mode
   "auto-beautify you js/jsx"
   nil
-  " AB "
-  auto-beautify-keymap)
+  " AB"
+  js-auto-beautify-keymap)
 
-(provide 'auto-beautify)
+(provide 'js-auto-beautify)
 
 
 ;;; auto-beautify.el ends here
