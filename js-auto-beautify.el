@@ -82,4 +82,4 @@
 (provide 'js-auto-beautify)
 
 
-;;; auto-beautify.el ends here
+;;; js-auto-beautify.el ends here
