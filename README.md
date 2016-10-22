@@ -5,9 +5,11 @@
 
 # Usag:
 
-(require 'auto-beautify)
+
 
 ```lisp
+(require 'js-auto-beautify)
+
 (add-hook 'js2-mode-hook 'js-auto-beautify-mode)
 ;; or 
 ;; (add-hook 'web-mode 'js-auto-beautify-mode)
