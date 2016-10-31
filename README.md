@@ -117,7 +117,7 @@ function render() {
 
 ** My jsbeautifyrc **
 
-file : ~/jsbeautifyrc
+file : ~/.jsbeautifyrc
 
 ```
 {
