@@ -1,7 +1,7 @@
 ;;; js-auto-beautify.el --- auto format you js/jsx file
 
 ;; Author: quanwei9958@126.com
-;; Version: 0.0.3
+;; Version: 0.0.4
 ;; Package-Requires: ((web-beautify "0.3.1") (web-mode "14.0.27"))
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -30,11 +30,11 @@
     (beginning-of-line)
     (looking-at "[[:space:]]*$")))
 
-(defsubst js-auto-beautify-begining-with-close-tag (&optional N)
+(defsubst js-auto-beautify-begining-with-tag (&optional N)
   "return t if the line begining with </"
   (or N (setq N 1))
   (save-excursion
-    (re-search-backward "^ *<\/.*" (line-beginning-position N) t)))
+    (re-search-backward "^ *<.*" (line-beginning-position N) t)))
 
 (defun js-auto-beautify-when-enter ()
   " eval web-beautify when type enter "
@@ -43,7 +43,7 @@
   (save-excursion
     (goto-char (- (line-end-position 0) 1))
     (unless (js-auto-beautify-current-line-empty-p)
-      (if (numberp (js-auto-beautify-begining-with-close-tag))
+      (if (numberp (js-auto-beautify-begining-with-tag))
           (let ((close-point (point)))
             (web-mode-navigate)
             (indent-region (point) close-point)
