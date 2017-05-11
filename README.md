@@ -1,3 +1,5 @@
+[![MELPA](https://melpa.org/packages/js-auto-beautify-badge.svg)](https://melpa.org/#/js-auto-beautify)
+
 # install
 
 * `npm install js-beautify -g`
@@ -11,16 +13,16 @@
 (require 'js-auto-beautify)
 
 (add-hook 'js2-mode-hook 'js-auto-beautify-mode)
-;; or 
+;; or
 ;; (add-hook 'web-mode 'js-auto-beautify-mode)
 ```
 
 if you want support React/jsx need set web-mode content type.
 
 ```
-(add-hook 'js2-mode-hook (lambda () 
+(add-hook 'js2-mode-hook (lambda ()
   (web-mode-set-content-type "jsx")))
-```  
+```
 
 Notice : Javascript indent dependent on your `~/jsbeautifyrc` config.
 
